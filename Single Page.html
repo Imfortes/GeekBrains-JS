@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>The Brand</title>
+    <link rel="stylesheet" href="css/Main.css" class="css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="js/Container.js"></script>
+    <script src="js/Good.js"></script>
+    <script src="js/Basket.js"></script>
+    <script src="js/UnderBasket.js"></script>
+    <script>
+        $(document).ready(function () {
+            // var good1 = new Good(127, 'Клавиатура для ПК', 1000);
+            // good1.render($('#goods'));
+            //
+            // var good2 = new Good(128, 'Коврик для мыши', 400);
+            // good2.render($('#goods'));
+
+            /** Сама корзина **/
+            var basket = new Basket('basket');
+            //basket.render($('#basket_wrapper'));
+
+            //console.log(basket.basketItems);
+
+            /** Отображение товаров в шапке **/
+            var underBasket = new UnderBasket(basket, '.under_basket_count', '.ul_under_basket', '.total_price');
+            underBasket.updateView(); //Отображаем полученные с сервера (заглушки) товары
+
+            // $('.buy_good').on('click', function () {
+            //     var idProduct = parseInt($(this).attr('data-id'));
+            //     var price = parseInt($(this).parent().find('.product-price').text());
+            //     var goodsTitle = $(this).parent().find('.goods-title').text();
+            //
+            //     basket.add(idProduct, goodsTitle, price);
+            //     console.log(basket.basketItems);
+            // });
+            // $('#basket_list').on('click', '.basket__delete', function () {
+            //     basket.remove(this.dataset.index);
+            // });
+
+            $('.mer__add').on('click', function () {
+
+                var $rootElement = $(this).parent().parent().parent();
+                var idProduct = parseInt($(this).attr('data-id'));
+                var price = parseInt($rootElement.find('.product-price').text());
+                var goodsTitle = $rootElement.find('.goods-title').text();
+                var imageLink = $rootElement.find('.product-image').attr('src');
+
+                //console.log(idProduct, price, goodsTitle, imageLink);
+                basket.add(idProduct, goodsTitle, price, imageLink);
+                //console.log(basket.basketItems);
+
+                //Перерисовываем товары
+                underBasket.updateView();
+            });
+
+
+        });
+    </script>
+</head>
+
+<body>
+
+<div class="header">
+    <div class="container box-flex">
+        <div class="left">
+            <div>
+                <a class="logo" href="Index.html"><img src="img/group-2.png" alt="logo"></a>
+            </div>
+            <div class="back-to-index">
+                <br>
+                <a href="Index.html"><span>BRAN</span><span>D</span></a>
+            </div>
+            <div class="browse">
+                <form action="">
+                    <button type="submit" class="btn">Browse <img src="img/9-6px.png" alt=""></button>
+                    <input type="text" placeholder="Seacrh for Item...">
+                    <div class="search-item"></div>
+                </form>
+            </div>
+        </div>
+
+
+        <div class="right">
+            <a class="basket" href="#"><img src="img/1113.png" alt="basket"><span class="under_basket_count">2</span></a>
+            <div class="under_basket">
+                <ul class="ul_under_basket">
+                    <!--<li class="under_basket-item">-->
+                    <!--<a href="#"><img src="img/layer-43%20(1).png" alt="layer-43" class="under_basket-mer"></a>-->
+                    <!--<h2 class="item-title"> Rebox Zane</h2>-->
+                    <!--<p>1 x &#36;<span class="item-price">250</span></p>-->
+                    <!--<a class="cancel" href="#"><img src="img/1827.png" alt="" class="under_basket-cancel"></a>-->
+                    <!--</li>-->
+                    <!--<li class="under_basket-item">-->
+                    <!--<a href="#"><img src="img/layer-44%20(1).png" alt="layer-43" class="under_basket-mer"></a>-->
+                    <!--<h2 class="item-title">Rebox Zane</h2>-->
+                    <!--<p>1 x &#36;<span class="item-price">250</span></p>-->
+                    <!--<a class="cancel" href="#"><img src="img/1827.png" alt="" class="under_basket-cancel"></a>-->
+                    <!--</li>-->
+                </ul>
+                <p class="total">TOTAL &#36;<span class="total_price">500.00</span></p>
+                <button>Checkout</button>
+                <button>Go to cart</button>
+            </div>
+            <button class="my_acc">My Account</button>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="nav">
+        <ul>
+            <li><a href="Index.html">HOME</a></li>
+            <li><a href="Product.html">MAN</a></li>
+            <li><a class="active-link" href="#">WOMEN</a></li>
+            <li><a href="">KIDS</a></li>
+            <li><a href="">ACCOSERIESE</a></li>
+            <li><a href="Checkout.html">FEATURED</a></li>
+            <li><a href="Shopping%20Cart.html">HOT DEALS</a></li>
+        </ul>
+    </div>
+</div>
+    <aside class="new-arrivals">
+        <div class="na">
+            <h2>new arrivals</h2>
+        </div>
+        <div class="hmna">
+            <h3>Home / Men / <span class="new-arr">new arrivals</span></h3>
+        </div>
+    </aside>
+    <main class="women-collection">
+        <div class="day-product">
+            <img src="img/layer-42.png" alt="">
+        </div>
+        <div class="cheap-and-chic">
+           <div class="item-1">
+               <span>WOMEN COLLECTION</span>
+           </div>
+           <div class="item-2">
+               <img src="img/shape-7.png" alt="" style="margin-top: 3px">
+
+           </div>
+           <div class="item-3">
+               <h1>Moschino Cheap And Chic</h1>
+           </div>
+           <div class="item-4">
+               <p>
+                   Compellingly actualize fully researched processes before proactive outsourcing. Progressively syndicate collaborative architectures before cutting-edge services. Completely visualize parallel core competencies rather than exceptional portals.
+               </p>
+           </div>
+           <div class="item-5">
+               <div class="item-5-left">
+                   <b>MATERIAL:</b> COTTON
+               </div>
+               <div class="item-5-right">
+                   <b>DESIGNER:</b> BINBURHAN
+               </div>
+           </div>
+           <div class="item-6">
+               <span>&#36;561</span>
+           </div>
+           <div class="item-7">
+
+           </div>
+            <div class="item-8">
+                <div class="item-8-color">
+                    <b>CHOOSE COLOR</b>
+                    <input type="text">
+                </div>
+                <div class="item-8-size">
+                    <b>CHOOSE SIZE</b>
+                    <input type="text">
+                </div>
+                <div class="item-8-quantity">
+                    <b>QUALITY</b>
+                    <input type="text">
+                </div>
+            </div>
+            <div class="item-9">
+                <a href="">
+                    <img src="" alt="">
+                    <span>Add to Cart</span>
+                </a>
+            </div>
+        </div>
+        <section class="merchandise-m">
+            <h1>YOU MAY LIKE ALSO</h1>
+            <div class="content-m">
+            <div class="mer__item">
+                <img src="img/1249.png" alt="" class="product-image">
+                <p class="mer__item-name item-title goods-title">Mango People T-shirt</p>
+                <span class="mer__item-cost item-price">&dollar;<span class="product-price">102.00</span></span>
+                <div class="mer__hover">
+                    <div class="mer__item-hover">
+                        <img src="img/forma-1-copy.png" alt="">
+                        <span class="mer__add" data-id="127">Add to Cart</span>
+                    </div>
+                </div>
+            </div>
+            <div class="mer__item">
+                <img src="img/1249.png" alt="" class="product-image">
+                <p class="mer__item-name item-title goods-title">Mango People T-shirt</p>
+                <span class="mer__item-cost item-price">&dollar;<span class="product-price">102.00</span></span>
+                <div class="mer__hover">
+                    <div class="mer__item-hover">
+                        <img src="img/forma-1-copy.png" alt="">
+                        <span class="mer__add" data-id="127">Add to Cart</span>
+                    </div>
+                </div>
+            </div>
+            <div class="mer__item">
+                <img src="img/1241.png" alt="" class="product-image">
+                <p class="mer__item-name item-title goods-title">Mango People T-shirt</p>
+                <span class="mer__item-cost item-price">&dollar;<span class="product-price">54.00</span></span>
+                <div class="mer__hover">
+                    <div class="mer__item-hover">
+                        <img src="img/forma-1-copy.png" alt="">
+                        <span class="mer__add" data-id="127">Add to Cart</span>
+                    </div>
+                </div>
+            </div>
+            <div class="mer__item">
+                <img src="img/1257.png" alt="" class="product-image">
+                <p class="mer__item-name item-title goods-title">Mango People T-shirt</p>
+                <span class="mer__item-cost item-price">&dollar;<span class="product-price">164.00</span></span>
+                <div class="mer__hover">
+                    <div class="mer__item-hover">
+                        <img src="img/forma-1-copy.png" alt="">
+                        <span class="mer__add" data-id="127">Add to Cart</span>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
+
+    </main>
+
+
+<div class="comment">
+
+
+        <div class="comments">
+
+            <div class="comments-img">
+                <img src="img/2207.png" alt="">
+            </div>
+
+            <div class="comments-bin-burhan">
+                <p>
+                    “Vestibulum quis porttitor dui! Quisque viverra nunc mi, a pulvinar purus condimentum a. Aliquam condimentum mattis neque sed pretium”
+                </p>
+                <p><br>
+                    <span>Bin Burhan</span>
+                    <p> <h4>Dhaka, Bd</h4>
+
+                <p>
+                    <img src="img/2212.png" alt="">
+                <img src="img/2211.png" alt="">
+                <img src="img/2212.png" alt="">
+                </p>
+            </div>
+
+        </div>
+        <div class="subscribe-submin">
+        <div class="subscribe">
+            <h1>SUBSCRIBE</h1>
+            <p>FOR OUR NEWLETTER AND PROMOTION</p>
+        </div>
+        <div class="form-subscribe">
+            <form action="">
+                <input type="text" placeholder="Enter Your Email">
+                <button>Subscribe</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+   <footer>
+        <div class="footer-brand">
+            <div>
+                <a class="logo" href="Index.html"><img src="img/group-2.png" alt="logo"></a>
+            </div>
+            <div>
+                <br>
+                <a href="Index.html">BRAN<span>D</span></a>
+            </div>
+            <div>
+                <p>
+                    Objectively transition extensive data rather than cross functional solutions. Monotonectally syndicate multidisciplinary materials before go forward benefits. Intrinsicly syndicate an expanded array of processes and cross-unit partnerships.
+                </p>
+                <p>
+                    Efficiently plagiarize 24/365 action items and focused infomediaries. Distinctively seize superior initiatives for wireless technologies. Dynamically optimize.
+                </p>
+            </div>
+        </div>
+        <div class="footer-company">
+            <br>
+            <span>COMPANY</span>
+            <ul>
+                <a href="">
+                    <li>Home</li>
+                </a>
+                <a href="">
+                    <li>Shop</li>
+                </a>
+                <a href="">
+                    <li>About</li>
+                </a>
+                <a href="">
+                    <li>How It Works</li>
+                </a>
+                <a href="">
+                    <li>Contact</li>
+                </a>
+            </ul>
+        </div>
+        <div class="footer-information">
+            <br>
+            <span>INFORMATION</span>
+            <ul>
+                <a href="">
+                    <li>Tearms & Condition</li>
+                </a>
+                <a href="">
+                    <li>Privacy Policy</li>
+                </a>
+                <a href="">
+                    <li>How It Buy</li>
+                </a>
+                <a href="">
+                    <li>How to Sell</li>
+                </a>
+                <a href="">
+                    <li>Promotion</li>
+                </a>
+            </ul>
+        </div>
+        <div class="footer-shop-category">
+            <br>
+            <span>SHOP CATEGORY</span>
+            <ul>
+                <a href="">
+                    <li>Men</li>
+                </a>
+                <a href="">
+                    <li>Women</li>
+                </a>
+                <a href="">
+                    <li>Child</li>
+                </a>
+                <a href="">
+                    <li>Apparel</li>
+                </a>
+                <a href="">
+                    <li>Brows All</li>
+                </a>
+            </ul>
+        </div>
+        <div class="copyright">
+            <div class="copy">
+                <p>
+                    © 2017 Brand All Rights Reserved.
+                </p>
+            </div>
+            <div class="icons">
+                <!--<div class="facebook"><a href=""></a></div>-->
+                <!--<div class="twitter"><a href=""></a></div>-->
+                <!--<div class="instagram"><a href=""></a></div>-->
+                <!--<div class="icon"><a href=""></a></div>-->
+                <!--<div class="google"><a href=""></a></div>-->
+                <ul>
+                    <li><a href=""><img src="img/420.png" alt=""></a></li>
+                    <li class="twitter"><a href=""><img src="img/425.png" alt=""></a></li>
+                    <li><a href=""><img src="img/429.png" alt=""></a></li>
+                    <li><a href=""><img src="img/433.png" alt=""></a></li>
+                    <li><a href=""><img src="img/-.png" alt=""></a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>

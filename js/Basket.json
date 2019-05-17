@@ -1,0 +1,19 @@
+{
+  "result": 1,
+  "basket": [
+    {
+      "src": "img/basket1.png",
+      "id_product": 125,
+      "title": "Rebox Zane",
+      "price": 250
+    },
+    {
+      "src": "img/basket2.png",
+      "id_product": 126,
+      "title": "Rebox Zane",
+      "price": 255
+    }
+  ],
+  "amount": 500
+}
+
